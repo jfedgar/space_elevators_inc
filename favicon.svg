@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1254 1254" width="1254" height="1254">
+  <!-- Space Elevators Incorporated mark. Geometry measured from favicon.png. -->
+  <defs>
+    <clipPath id="disc"><circle cx="627" cy="615" r="479"/></clipPath>
+  </defs>
+
+  <!-- white tile with slightly rounded corners -->
+  <rect width="1254" height="1254" rx="110" fill="#ffffff"/>
+
+  <!-- orbit ring: thin at the back, thick at the sides and front -->
+  <path fill="#141414" fill-rule="evenodd"
+        d="M288 391a339 92 0 1 0 678 0a339 92 0 1 0 -678 0z M356 381.5a271 71.5 0 1 0 542 0a271 71.5 0 1 0 -542 0z"/>
+
+  <!-- planet surface: horizon line, gap, filled ground; all clipped to the disc -->
+  <g clip-path="url(#disc)">
+    <circle cx="627" cy="1462" r="579" fill="none" stroke="#141414" stroke-width="14"/>
+    <circle cx="627" cy="1462" r="558" fill="#141414"/>
+  </g>
+
+  <!-- halo around the node -->
+  <circle cx="627" cy="307" r="62" fill="#ffffff"/>
+
+  <!-- tether with a white halo where it crosses the ring and the ground -->
+  <line x1="627" y1="440" x2="627" y2="1094" stroke="#ffffff" stroke-width="33"/>
+  <line x1="627" y1="121" x2="627" y2="1094" stroke="#141414" stroke-width="15"/>
+
+  <!-- node -->
+  <circle cx="627" cy="307" r="49" fill="#141414"/>
+
+  <!-- outer disc -->
+  <circle cx="627" cy="615" r="479" fill="none" stroke="#141414" stroke-width="30"/>
+
+  <!-- elevator car: white halo first, then the orange car -->
+  <g fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round">
+    <rect x="587" y="628" width="80" height="22"/>
+    <path d="M575 650H679L699 670V810H555V670Z"/>
+    <path d="M582 818H672V828L664 836H590L582 828Z"/>
+  </g>
+  <g fill="#ef6012">
+    <rect x="587" y="628" width="80" height="22"/>
+    <path d="M575 650H679L699 670V810H555V670Z"/>
+    <path d="M582 818H672V828L664 836H590L582 828Z"/>
+  </g>
+  <path fill="#ffffff" d="M581 663H673L686 676V797H568V676Z"/>
+  <g fill="#ef6012">
+    <path d="M584 672H622V786H578V678Z"/>
+    <path d="M632 672H670L676 678V786H632Z"/>
+  </g>
+</svg>
