@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Machined bracket — Space Elevators Incorporated</title>
+  <meta name="description" content="Case study format: an undocumented machined bracket reverse engineered into a parametric model, validated against the scan and in its fixture, and machined as a first article.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="canonical" href="https://elevatorsinc.space/work/example-machined-bracket.html">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="wrap topbar">
+  <a class="mono" href="../index.html">Space Elevators Incorporated</a>
+  <nav class="mono" aria-label="Primary">
+    <a href="../index.html#business">Business</a>
+    <a href="../index.html#method">Method</a>
+    <a href="../index.html#work">Work</a>
+    <a href="../index.html#begin">Begin</a>
+  </nav>
+</header>
+
+<!-- TEMPLATE: this page shows the case-study format with example content.
+     Every number below is illustrative. Replace with measured values from a real project
+     before publishing, and delete the .work-note paragraph. -->
+
+<section class="wrap case-head">
+  <span class="mono">Work &middot; Reverse engineering &middot; Example format</span>
+  <h1>Machined bracket <span class="arrow">&rarr;</span> parametric model &amp; first article</h1>
+  <p class="work-note" style="margin-top:1.5rem">Example content. This page demonstrates the structure of a project write-up. Values are placeholders until a real project is documented.</p>
+
+  <dl class="spec">
+    <div><dt>Material</dt><dd>Aluminum 6061-T6 (inferred)</dd></div>
+    <div><dt>Envelope</dt><dd>128.4 &times; 73.3 &times; 32 mm</dd></div>
+    <div><dt>Capture</dt><dd>Structured-light scan + bore probing</dd></div>
+    <div><dt>Deliverables</dt><dd>Native CAD, STEP, drawing PDF, deviation report</dd></div>
+    <div><dt>Revisions</dt><dd>2</dd></div>
+    <div><dt>Verification</dt><dd>Printed fit check, machined first article</dd></div>
+  </dl>
+</section>
+
+<div class="wrap case-body">
+
+  <div class="case-row">
+    <div><span class="mono">Situation</span><h2>One good sample, no drawing</h2></div>
+    <div class="prose">
+      <p>The customer needed more of a bracket that had been made once, years earlier, by a shop that no longer existed. One sample remained in service. There was no drawing, no model, and no record of the material.</p>
+      <p>The functional requirements were clear: two bores had to hold their center distance and stay parallel, a two-hole foot had to match an existing plate, and the truss web had to clear a neighbouring component. Everything else was a consequence of how the original had been machined.</p>
+    </div>
+  </div>
+
+  <div class="case-row">
+    <div><span class="mono">Capture</span><h2>Scan for form, probe for function</h2></div>
+    <div>
+      <div class="prose">
+        <p>The bracket was scanned in several orientations and the scans merged into a single mesh. Bore diameters, the bore center distance, and the foot hole positions were measured separately with probing and gauges, because those features carried the tolerances and a scan alone is not the right instrument for them.</p>
+      </div>
+      <div class="plates-2">
+        <figure class="photo">
+          <img src="../images/bracket-bench-machined-and-printed.jpg" alt="The original machined bracket on the bench beside the 3D-printed check prototype" width="1448" height="790" loading="lazy">
+          <figcaption>Original sample (left) and the printed check prototype (right)</figcaption>
+        </figure>
+        <figure class="photo">
+          <img src="../images/bracket-scan-mesh-isometric.jpg" alt="Merged scan mesh of the bracket, isometric view, neutral shading" width="1448" height="790" loading="lazy">
+          <figcaption>Merged scan mesh, isometric, before cleanup</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-row">
+    <div><span class="mono">Reconstruct</span><h2>Design intent, not a tracing</h2></div>
+    <div>
+      <div class="prose">
+        <p>The model was rebuilt as a parametric part with the large bore axis as the primary datum and the foot face as the secondary. Bores were modeled at nominal, not at the measured diameter of a used part. Fillets and the web pocket were rationalized to consistent radii where the original varied from tool to tool. The feature tree is short on purpose: four extrudes, one cut, one rib, two fillets, one chamfer.</p>
+      </div>
+      <figure class="photo wide" style="margin-top:1.5rem">
+        <img src="../images/bracket-cad-model-feature-tree.jpg" alt="Parametric CAD model of the bracket with the feature tree visible" width="1448" height="790" loading="lazy">
+        <figcaption>Reconstructed model, same isometric as the scan, feature tree visible</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="case-row">
+    <div><span class="mono">Validate</span><h2>Model to scan, then model to world</h2></div>
+    <div>
+      <div class="prose">
+        <p>The finished model was compared to the scan. Deviations on the bores and foot were within the planned tolerance. The largest deviations occurred on the outer fillets and were expected, since those had been rationalized. A prototype was printed and seated in a fixture that reproduced the customer's mounting interface, then a first article was machined from 6061 billet.</p>
+      </div>
+      <div class="table-scroll">
+        <table class="deviation">
+          <thead>
+            <tr><th>Feature</th><th>Nominal</th><th>Measured (sample)</th><th>Model &minus; scan</th><th>Note</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Large bore &empty;</td><td>20.000</td><td>20.04</td><td>&plusmn;0.03</td><td>Sample worn; modeled at nominal</td></tr>
+            <tr><td>Small bore &empty;</td><td>12.000</td><td>12.01</td><td>&plusmn;0.02</td><td>&mdash;</td></tr>
+            <tr><td>Bore center distance</td><td>96.500</td><td>96.48</td><td>&plusmn;0.03</td><td>Verified by probing</td></tr>
+            <tr><td>Bore parallelism</td><td>0.05</td><td>0.03</td><td>&mdash;</td><td>&mdash;</td></tr>
+            <tr><td>Foot hole spacing</td><td>48.000</td><td>47.99</td><td>&plusmn;0.02</td><td>&mdash;</td></tr>
+            <tr><td>Outer fillet R</td><td>12.500</td><td>11.8&ndash;13.1</td><td>&plusmn;0.60</td><td>Cosmetic; rationalized</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mono" style="margin-top:0.75rem;text-transform:none;letter-spacing:0.02em">All values in millimetres. Illustrative until replaced with project data.</p>
+      <div class="plates-2">
+        <figure class="photo">
+          <img src="../images/bracket-deviation-map.jpg" alt="Color-mapped deviation of the CAD model against the scan, with scale bar" width="1448" height="790" loading="lazy">
+          <figcaption>Model-to-scan deviation, &plusmn;1.00 mm scale</figcaption>
+        </figure>
+        <figure class="photo">
+          <img src="../images/bracket-fit-check-fixture.jpg" alt="The printed bracket prototype bolted into a steel check fixture" width="1448" height="790" loading="lazy">
+          <figcaption>Fit check: printed prototype seated in the mating fixture</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-row">
+    <div><span class="mono">Result</span><h2>A part that can be made again</h2></div>
+    <div class="prose">
+      <p>The customer received a native CAD model, a STEP file, a dimensioned drawing with GD&amp;T on the bores and foot, the deviation report, and one machined bracket that fit. The drawing package now allows the part to be reordered from any competent shop.</p>
+      <p style="margin-top:1.5rem"><a class="back" href="../index.html#work"><span class="arrow">&larr;</span> All work</a></p>
+    </div>
+  </div>
+
+</div>
+
+<footer class="wrap footer">
+  <span class="mono">&copy; 2026 Space Elevators Incorporated &middot; St. Louis, Missouri</span>
+  <nav aria-label="Footer">
+    <a href="../index.html#business">Business</a>
+    <a href="../index.html#method">Method</a>
+    <a href="../index.html#work">Work</a>
+    <a href="mailto:hello@elevatorsinc.space">Email</a>
+  </nav>
+</footer>
+
+</body>
+</html>
