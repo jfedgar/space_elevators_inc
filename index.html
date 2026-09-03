@@ -244,22 +244,50 @@
 </footer>
 
 <script>
-  // Fit the longest line of the name to the container width so the wordmark
-  // spans the fold at any viewport. CSS provides an estimate; this corrects it.
   (function () {
     var h1 = document.querySelector('.name');
-    var line = h1 && h1.querySelector('[data-fit]');
-    if (!line) return;
+    if (!h1) return;
+    var lines = Array.prototype.slice.call(h1.querySelectorAll('span'));
+    var longest = h1.querySelector('[data-fit]');
+    var phone = window.matchMedia('(max-width: 640px)');
+
+    function textWidth(el) {
+      var r = document.createRange(); r.selectNodeContents(el);
+      return r.getBoundingClientRect().width;
+    }
+    // Desktop: one size, the longest line spans the container.
+    // Phone: every line is sized independently so each one spans the container.
     function fit() {
       h1.style.fontSize = '';
+      lines.forEach(function (s) { s.style.fontSize = ''; });
       var target = h1.clientWidth;
-      var base = parseFloat(getComputedStyle(h1).fontSize);
-      var w = line.getBoundingClientRect().width;
-      if (w > 0) h1.style.fontSize = (base * target / w).toFixed(2) + 'px';
+      if (phone.matches) {
+        lines.forEach(function (s) {
+          var base = parseFloat(getComputedStyle(s).fontSize);
+          var w = textWidth(s);
+          if (w > 0) s.style.fontSize = (base * target / w).toFixed(2) + 'px';
+        });
+      } else {
+        var base = parseFloat(getComputedStyle(h1).fontSize);
+        var w = textWidth(longest);
+        if (w > 0) h1.style.fontSize = (base * target / w).toFixed(2) + 'px';
+      }
     }
     var run = function () { fit(); requestAnimationFrame(fit); };
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(run); else run();
     window.addEventListener('resize', fit);
+
+    // Phone top bar: hidden over the first fold, slides in once the name has scrolled away.
+    var bar = document.querySelector('.topbar');
+    function toggleBar() {
+      if (!bar) return;
+      var past = h1.getBoundingClientRect().bottom < 0;
+      bar.classList.toggle('is-visible', phone.matches && past);
+    }
+    window.addEventListener('scroll', toggleBar, { passive: true });
+    window.addEventListener('resize', toggleBar);
+    if ('IntersectionObserver' in window) new IntersectionObserver(toggleBar).observe(h1);
+    toggleBar();
   })();
 </script>
 </body>
